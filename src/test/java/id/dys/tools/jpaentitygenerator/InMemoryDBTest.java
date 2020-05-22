@@ -24,7 +24,8 @@ public class InMemoryDBTest {
             Main.main(new String[]{"-o", "./target/entity-generated", 
                     "-p", "./src/test/resources/hibernate.properties", 
                     "-r", "./src/test/resources/hibernate.reveng.xml", 
-                    "-P", "gen.entity"});
+                    "-P", "gen.entity", 
+                    "-s", CustomStrategy.class.getName()});
             
         } finally {
             server.stop();

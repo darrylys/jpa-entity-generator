@@ -4,6 +4,17 @@
     "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
  
 <hibernate-reverse-engineering>
+    
+    <!-- 
+        Maps SQL type to Java type. In this case, SQL type TIMESTAMP WITH TIMEZONE will
+        be mapped to java.time.OffsetDateTime in generated entity java class. By default,
+        TIMESTAMP WITH TIMEZONE will be mapped to java.io.Serializable.
+    -->
+    <!-- jdbc-type must be in SQLType. see https://docs.oracle.com/javase/8/docs/api/java/sql/JDBCType.html -->
+    <type-mapping>
+        <sql-type jdbc-type="TIMESTAMP_WITH_TIMEZONE" hibernate-type="java.time.OffsetDateTime" />
+    </type-mapping>
+    
     <!-- These are case sensitive, somehow, to the database. See the generated entries in @Table -->
     <table schema="PUBLIC" catalog="DB1" name="USERS">
         <primary-key>

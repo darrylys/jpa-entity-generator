@@ -20,8 +20,10 @@ set JAVA_HOME to installed JDK. Tested with jdk8
 Execute `mvn package`.  
   
 Required libraries will be copied to target/lib folder  
-Sample of generated code is in target/entity-generated folder.  
-Sample of DB schema source, hibernate properties and reverse engineering customizer is in src/main/resources.  
+Example of generated code is in target/entity-generated folder.  
+Example of DB schema source, hibernate properties and reverse engineering 
+customizer is in src/main/resources db_init.sql, hibernate.properties and 
+hibernate.reveng.xml respectively.  
   
 Documentation about hibernate customizer xml file can be seen [here](https://www.codejava.net/frameworks/hibernate/how-to-customize-hibernate-reverse-engineering-code-generation).
   
@@ -29,7 +31,7 @@ Documentation about hibernate customizer xml file can be seen [here](https://www
 Command Line
 ------------
   
-    java -cp ./target/lib/*;./target/drivers/*;./target/hibernate-tools-jpa-entity-generator-1.0-SNAPSHOT.jar \
+    java -cp ./target/lib/*:./target/hibernate-tools-jpa-entity-generator-1.0-SNAPSHOT.jar \
         id.dys.tools.jpaentitygenerator.Main \
         -o (output folder) \
         -p (hibernate.properties file path) \
@@ -37,6 +39,11 @@ Command Line
         -P (package for generated sources) \
         -s (fully qualified class name of custom strategy)
   
+The given package for generated sources can be changed from custom strategy and
+customizer xml. Hibernate uses both customizer xml and custom strategy class when
+reverse engineering.  
+Add the database driver jar to target/lib directory. If custom strategy is used,
+add the jar of the custom strategy to target/lib as well.  
   
 Disclaimer
 ----------
